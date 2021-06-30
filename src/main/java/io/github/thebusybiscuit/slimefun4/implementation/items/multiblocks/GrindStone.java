@@ -44,8 +44,8 @@ public class GrindStone extends MultiBlockMachine {
         recipes.add(new ItemStack(Material.BONE_BLOCK));
         recipes.add(new ItemStack(Material.BONE_MEAL, 9));
 
-        recipes.add(new ItemStack(Material.ENDER_EYE));
-        recipes.add(new SlimefunItemStack(SlimefunItems.ENDER_LUMP_1, 2));
+//        recipes.add(new ItemStack(Material.ENDER_EYE));
+//        recipes.add(new SlimefunItemStack(SlimefunItems.ENDER_LUMP_1, 2));
 
         recipes.add(new ItemStack(Material.COBBLESTONE));
         recipes.add(new ItemStack(Material.GRAVEL));
@@ -80,17 +80,17 @@ public class GrindStone extends MultiBlockMachine {
         recipes.add(new ItemStack(Material.QUARTZ_BLOCK));
         recipes.add(new ItemStack(Material.QUARTZ, 4));
 
-        recipes.add(SlimefunItems.MAGIC_LUMP_2);
-        recipes.add(new SlimefunItemStack(SlimefunItems.MAGIC_LUMP_1, 4));
-
-        recipes.add(SlimefunItems.MAGIC_LUMP_3);
-        recipes.add(new SlimefunItemStack(SlimefunItems.MAGIC_LUMP_2, 4));
-
-        recipes.add(SlimefunItems.ENDER_LUMP_2);
-        recipes.add(new SlimefunItemStack(SlimefunItems.ENDER_LUMP_1, 4));
-
-        recipes.add(SlimefunItems.ENDER_LUMP_3);
-        recipes.add(new SlimefunItemStack(SlimefunItems.ENDER_LUMP_2, 4));
+//        recipes.add(SlimefunItems.MAGIC_LUMP_2);
+//        recipes.add(new SlimefunItemStack(SlimefunItems.MAGIC_LUMP_1, 4));
+//
+//        recipes.add(SlimefunItems.MAGIC_LUMP_3);
+//        recipes.add(new SlimefunItemStack(SlimefunItems.MAGIC_LUMP_2, 4));
+//
+//        recipes.add(SlimefunItems.ENDER_LUMP_2);
+//        recipes.add(new SlimefunItemStack(SlimefunItems.ENDER_LUMP_1, 4));
+//
+//        recipes.add(SlimefunItems.ENDER_LUMP_3);
+//        recipes.add(new SlimefunItemStack(SlimefunItems.ENDER_LUMP_2, 4));
 
         recipes.add(new ItemStack(Material.DIAMOND));
         recipes.add(new SlimefunItemStack(SlimefunItems.CARBON, 4));
