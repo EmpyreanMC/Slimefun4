@@ -1,5 +1,6 @@
 package io.github.thebusybiscuit.slimefun4.implementation.items.blocks;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +33,7 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 public class Composter extends SimpleSlimefunItem<BlockUseHandler> implements RecipeDisplayItem {
 
     private final List<ItemStack> recipes;
+    private final List<Location> occupiedLocations = new ArrayList<>();
 
     @ParametersAreNonnullByDefault
     public Composter(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -86,6 +88,12 @@ public class Composter extends SimpleSlimefunItem<BlockUseHandler> implements Re
                     ItemStack output = getOutput(p, input);
 
                     if (output != null) {
+                        if (occupiedLocations.contains(b.getLocation())) {
+                            SlimefunPlugin.getLocalization().sendMessage(p, "machines.occupied", true);
+                            return;
+                        }
+                        occupiedLocations.add(b.getLocation());
+
                         TaskQueue tasks = new TaskQueue();
 
                         tasks.thenRepeatEvery(30, 10, () -> {
@@ -96,6 +104,7 @@ public class Composter extends SimpleSlimefunItem<BlockUseHandler> implements Re
                         tasks.thenRun(20, () -> {
                             p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 1F, 1F);
                             pushItem(b, output.clone());
+                            occupiedLocations.remove(b.getLocation());
                         });
 
                         tasks.execute(SlimefunPlugin.instance());

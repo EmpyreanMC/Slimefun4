@@ -6,10 +6,7 @@ import java.util.Optional;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import org.bukkit.Effect;
-import org.bukkit.GameMode;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
@@ -42,6 +39,7 @@ public class AutomatedPanningMachine extends MultiBlockMachine {
 
     private final GoldPan goldPan = SlimefunItems.GOLD_PAN.getItem(GoldPan.class);
     private final NetherGoldPan netherGoldPan = SlimefunItems.NETHER_GOLD_PAN.getItem(NetherGoldPan.class);
+    private final List<Location> occupiedLocations = new ArrayList<>();
 
     @ParametersAreNonnullByDefault
     public AutomatedPanningMachine(Category category, SlimefunItemStack item) {
@@ -63,6 +61,12 @@ public class AutomatedPanningMachine extends MultiBlockMachine {
         ItemStack input = p.getInventory().getItemInMainHand();
 
         if (SlimefunUtils.isItemSimilar(input, new ItemStack(Material.GRAVEL), true, false) || SlimefunUtils.isItemSimilar(input, new ItemStack(Material.SOUL_SAND), true, false)) {
+            if (occupiedLocations.contains(b.getLocation())) {
+                SlimefunPlugin.getLocalization().sendMessage(p, "machines.occupied", true);
+                return;
+            }
+            occupiedLocations.add(b.getLocation());
+
             Material material = input.getType();
 
             if (p.getGameMode() != GameMode.CREATIVE) {
@@ -88,6 +92,7 @@ public class AutomatedPanningMachine extends MultiBlockMachine {
                 } else {
                     p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ARMOR_STAND_BREAK, 1F, 1F);
                 }
+                occupiedLocations.remove(b.getLocation());
             });
 
             queue.execute(SlimefunPlugin.instance());
