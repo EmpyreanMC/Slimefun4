@@ -41,13 +41,22 @@ public class OreWasher extends MultiBlockMachine {
     // @formatter:off
     private final ItemStack[] dusts = new ItemStack[] {
         SlimefunItems.IRON_DUST,
+        SlimefunItems.IRON_DUST,
         SlimefunItems.GOLD_DUST,
         SlimefunItems.COPPER_DUST,
+        SlimefunItems.COPPER_DUST,
+        SlimefunItems.TIN_DUST,
         SlimefunItems.TIN_DUST,
         SlimefunItems.ZINC_DUST,
+        SlimefunItems.ZINC_DUST,
+        SlimefunItems.ALUMINUM_DUST,
         SlimefunItems.ALUMINUM_DUST,
         SlimefunItems.MAGNESIUM_DUST,
+        SlimefunItems.MAGNESIUM_DUST,
         SlimefunItems.LEAD_DUST,
+        SlimefunItems.LEAD_DUST,
+        SlimefunItems.SILVER_DUST,
+        SlimefunItems.SILVER_DUST,
         SlimefunItems.SILVER_DUST
     };
     // @formatter:on
